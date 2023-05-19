@@ -1,9 +1,14 @@
+import { NextPage } from 'next';
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
+const Document: NextPage = () => {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <title>cristianrojas</title>
+        <meta name="description" content="Cristian Rojas portfolio"></meta>
+      </Head>
       <body>
         <Main />
         <NextScript />
@@ -11,3 +16,5 @@ export default function Document() {
     </Html>
   )
 }
+
+export default Document;

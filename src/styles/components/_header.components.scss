@@ -1,0 +1,25 @@
+.header {
+    position:fixed;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    background-color: $primary-white-background-color;
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+    border-bottom: 3px solid $primary-black-border;
+
+    &__logo {
+        min-width: 260px;
+        display: flex;
+        align-items: center;
+
+        img {
+            padding-left: 20px;
+
+            &:first-child {
+                padding-left:50px;
+            }
+        }  
+    }
+}
