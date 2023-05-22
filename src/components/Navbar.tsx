@@ -1,20 +1,32 @@
 import Link from "next/link";
+import { useRef, useState } from "react";
 
 type Props = {
     className?: string
   }
 
 const Header: React.FC<Props> = (props: Props) => {
+    const [activeLink, setActiveLink] = useState(0);
+    let navbarRef = useRef<HTMLDivElement>(null);
+
+    const updateNavbar = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+        if (navbarRef.current) {
+
+        }
+        console.log(event.target)
+        console.log(navbarRef)
+    }
+
     const getNavbarMainLinks = () => (
         <>
-            <Link className="navbar-link navbar-link-highlight" href="/#about"> 
+            <Link className="navbar-link navbar-link-highlight" onClick={updateNavbar} href="/#about"> 
                 <img src="/purple-ellipse.svg" alt="" /> 
                 About
             </Link>
-            <Link className="navbar-link" href="/#skills">Skills</Link>
-            <Link className="navbar-link" href="/#timeline">Timeline</Link>
-            <Link className="navbar-link" href="/#projects">Projects</Link>
-            <Link className="navbar-link" href="/#references">References</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#skills">Skills</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#timeline">Timeline</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#projects">Projects</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#references">References</Link>
         </>
     )
 
@@ -28,7 +40,7 @@ const Header: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={"navbar " + ((props.className)?props.className:"")} >
-            <div className='navbar__main'>
+            <div className='navbar__main' ref={navbarRef}>
                 { getNavbarMainLinks() }
             </div>
             <div className="navbar__secondary">
