@@ -9,21 +9,41 @@
     }
 
     &__main {
+        padding-left: 50px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;    
         gap: 50px;
+        
+        @include breakpoint($laptop) {
+            border-top: 3px solid $primary-black-border;
+            padding-left: 0px;
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            background-color: #fff;
+            width: 100vw;
+            height: 90px;
 
+            gap: unset;
+            justify-content: space-evenly;
+    
+        }
+        
         .navbar-link-highlight {
             position: relative;
             color: $primary-purple-color;
             font-weight: bold;
     
-            img {
+            &__ellipse {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+
+                @include breakpoint($navbar-icons-breakpoint) {
+                    display: none;
+                }
             }
         }
     }
@@ -36,6 +56,14 @@
         display: flex;
         gap: 50px;
         background-color: $primary-black-background-color;
+
+        @include breakpoint($laptop) {
+            background-color: #fff;
+
+            img {
+                filter: invert(1);
+            }
+        }
 
         a {
             color: $primary-white-font-color;
