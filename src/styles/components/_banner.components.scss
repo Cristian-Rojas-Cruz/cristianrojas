@@ -1,4 +1,4 @@
-.Banner {
+.banner {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -13,6 +13,27 @@
         position: absolute;
         transform: rotate(0deg); 
         animation:spin 7s linear infinite;
+    }
+
+    &__content {
+        z-index: 0;
+
+        p, h1 {
+            text-shadow:-3px 3px #292974;  
+            color: $primary-white-font-color;
+        }
+        
+        p {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 22.4px;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 68.09px;
+            font-weight: 700;
+        }
     }
 }
 

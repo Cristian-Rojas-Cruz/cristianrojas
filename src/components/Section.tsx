@@ -1,12 +1,24 @@
-import type { AppProps } from 'next/app';
-import '@/styles/index.scss';
+import { ScriptProps } from "next/script";
 
-const Section = ({Component, pageProps}: AppProps) => {
+type backgroundColors = "purple" | "gray" | "lightgray";
+
+interface Props extends ScriptProps {
+  bg: backgroundColors[];
+}
+
+const Section = (props: Props) => {
+  const { bg } = props;
+  // console.log(props.children)
   return(
-    <>
-      <Component {...pageProps} />
-    </>
+<>
+
+    <div className={`section ${props.bg.length > 1?"section--grid":""} ${props.bg.length===1?"bg-"+props.bg[0]:""}`}>
+      { props.children }
+    </div>
+</>
+
   )
+  
 }
 
 export default Section;

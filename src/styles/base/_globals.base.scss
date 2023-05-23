@@ -10,7 +10,7 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-p, a, span, i {
+p, a, span, i, h1 {
     text-decoration: none;
     color: $primary-black-font-color;
     font-family: 'Inter', sans-serif;
