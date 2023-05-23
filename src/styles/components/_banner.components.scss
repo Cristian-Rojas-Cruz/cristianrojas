@@ -1,9 +1,9 @@
-.Banner {
+.banner {
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 680px;
+    height: 70vh;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -13,6 +13,10 @@
         position: absolute;
         transform: rotate(0deg); 
         animation:spin 7s linear infinite;
+
+        @include breakpoint($tablet) {
+            width: 300%;
+        }
     }
 }
 

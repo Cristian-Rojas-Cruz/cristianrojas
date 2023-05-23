@@ -1,11 +1,15 @@
+import { useWindowSize } from "@/utils/hooks";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom";
+import ReactDOMServer from 'react-dom/server';
 
 type Props = {
     className?: string
 }
 
-const Header: React.FC<Props> = (props: Props) => {
+const Navbar: React.FC<Props> = (props: Props) => {
+    const { width } = useWindowSize();
     const [activeLink, setActiveLink] = useState<number>(0);
     const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -19,29 +23,42 @@ const Header: React.FC<Props> = (props: Props) => {
                 if (element === event.target) {
                     setActiveLink(index)
                     element.classList.toggle("navbar-link-highlight");
-                    element.prepend(generateImg("/purple-ellipse.svg", ""))
+                    
+                    const image = document.createElement("img")
+                    image.src = "/purple-ellipse.svg";
+                    image.alt = "";
+                    image.classList.add("navbar-link-highlight__ellipse")
+
+                    element.prepend(image)
                 }
             });
         }
     };
 
-    const generateImg = (src: string, alt: string): HTMLImageElement => {
-        const newImg = document.createElement("img");
-        newImg.src = src;
-        newImg.alt = alt;
-        return newImg;
+    const generateImg = (src: string, alt: string, className?: string) => {
+        return (
+            <img src={src} alt={alt} className={className?className:""} />
+        )
+    }
+
+    const getNavbarLinkContent = (iconLink: string, text:string) => {
+        if (width <= 580) {
+            return (
+                <>{generateImg(iconLink, text)}</>
+            ) 
+        }
+        return text;
     }
 
     const getNavbarMainLinks = () => (
         <>
             <Link className="navbar-link navbar-link-highlight" onClick={updateNavbar} href="/#about"> 
-                <img src="/purple-ellipse.svg" alt="" /> 
-                About
+                <img className="navbar-link-highlight__ellipse" src="/purple-ellipse.svg" alt="" /> {  getNavbarLinkContent("/home.svg" , "About") }
             </Link>
-            <Link className="navbar-link" onClick={updateNavbar}href="/#skills">Skills</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#timeline">Timeline</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#projects">Projects</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#references">References</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#skills">{ getNavbarLinkContent("/briefcase.svg" , "Skills") }</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#timeline">{ getNavbarLinkContent("/clock.svg" , "Timeline") }</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#projects">{ getNavbarLinkContent("/projects-icon.svg" , "Projects") }</Link>
+            <Link className="navbar-link" onClick={updateNavbar} href="/#references">{ getNavbarLinkContent("/persons-icon.svg" , "References") }</Link>
         </>
     )
 
@@ -53,9 +70,15 @@ const Header: React.FC<Props> = (props: Props) => {
         </>
     )
 
+    useEffect(() => {
+        if (width < 580) {
+
+        }
+    }, [])
+
     return (
         <div className={"navbar " + ((props.className)?props.className:"")} >
-            <div className='navbar__main' ref={navbarRef}>
+            <div className="navbar__main" ref={navbarRef}>
                 { getNavbarMainLinks() }
             </div>
             <div className="navbar__secondary">
@@ -65,4 +88,4 @@ const Header: React.FC<Props> = (props: Props) => {
     )
 }
 
-export default Header;
+export default Navbar;
