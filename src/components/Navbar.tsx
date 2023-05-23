@@ -15,19 +15,20 @@ const Navbar: React.FC<Props> = (props: Props) => {
 
     const updateNavbar = (event: React.MouseEvent<HTMLAnchorElement>) => {
         if (navbarRef.current) {
-            if (navbarRef.current.children[activeLink].children[0]) {
+            if (navbarRef.current.children[activeLink].children[0].className === "navbar-link-highlight__ellipse"){
+                navbarRef.current.children[activeLink].classList.remove("navbar-link-highlight");
                 navbarRef.current.children[activeLink].children[0].remove();
-                navbarRef.current.children[activeLink].classList.toggle("navbar-link-highlight");
             }
+
             Array.from(navbarRef.current.children).forEach((element, index) => {
                 if (element === event.target) {
                     setActiveLink(index)
-                    element.classList.toggle("navbar-link-highlight");
+                    element.classList.add("navbar-link-highlight");
                     
                     const image = document.createElement("img")
                     image.src = "/purple-ellipse.svg";
                     image.alt = "";
-                    image.classList.add("navbar-link-highlight__ellipse")
+                    image.classList.add("navbar-link-highlight__ellipse");
 
                     element.prepend(image)
                 }

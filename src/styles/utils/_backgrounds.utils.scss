@@ -1,0 +1,10 @@
+@each $color in map-keys($colors) {
+    .bg-#{$color} {
+        @if map-has-key($colors, $color) {
+            background-color: inspect(map-get($colors, $color));
+        } @else {
+            @warn "Unfortunately, no value could be retrieved from `#{$color}`. "
+                + "Available breakpoints are: #{map-keys($colors)}.";
+        }
+    }
+}

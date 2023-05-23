@@ -1,21 +1,27 @@
 import { ScriptProps } from "next/script";
 
-type backgroundColors = "purple" | "gray" | "lightgray";
+type backgroundColors = "purple" | "gray" | "transparent" ;
 
 interface Props extends ScriptProps {
-  bg: backgroundColors[];
+  bg: [backgroundColors, ...backgroundColors[]];
+
 }
 
 const Section = (props: Props) => {
-  const { bg } = props;
-  // console.log(props.children)
+  const { bg, children } = props;
   return(
-<>
-
-    <div className={`section ${props.bg.length > 1?"section--grid":""} ${props.bg.length===1?"bg-"+props.bg[0]:""}`}>
-      { props.children }
+  <>
+    <div className={`section ${bg.length > 1?"section--columns-"+bg.length:""} ${bg.length===1?"bg-"+bg[0]:""}`}>
+      {
+        children?
+        Object.values(children).map((children, index) => {
+          return (
+            <div key={index} className={`bg-${bg[index]}`}>{children}</div>
+          )
+        }):""
+      }
     </div>
-</>
+  </>
 
   )
   

@@ -6,8 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Banner />
-      <Section bg={["purple", "lightgray"]}><div>pinga</div><div>pinga</div></Section>
-      <Section bg={["purple"]}><div>pinga</div></Section>
+      <Section bg={["purple", "gray"]}><div>test</div><div>test</div></Section>
     </>
   )
 }

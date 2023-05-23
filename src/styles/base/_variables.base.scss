@@ -10,6 +10,14 @@ $primary-white-font-color: #FBFBFB;
 $primary-black-background-color: #050505;
 $primary-white-background-color: #FFFFFF;
 
+// Backgrounds 
+$colors: (
+    purple: #8435F2,
+    gray: #FBFBFB, 
+    transparent: transparent
+);
+
+$max-number-of-grid-columns: 4;
 
 // Breakpoints
 
