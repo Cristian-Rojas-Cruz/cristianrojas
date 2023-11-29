@@ -1,11 +1,15 @@
-const Banner: React.FC = () => {
+import { ScriptProps } from "next/script";
+
+interface Props extends ScriptProps {};
+
+const Banner = (props: Props) => {
+    const { children } = props; 
 
     return (
         <div className="banner">
             <img src="/banner.svg" alt="" className='banner__image'/>
             <div className="banner__content">
-                <h1>Cristian Rojas</h1>
-                <p>Web Developer, System administrator and DevOps Enthusiast.</p>
+                {children}
             </div>
         </div>
     )

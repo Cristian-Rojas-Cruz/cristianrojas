@@ -1,8 +1,6 @@
 import { useWindowSize } from "@/utils/hooks";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
-import ReactDOMServer from 'react-dom/server';
 
 type Props = {
     className?: string
@@ -53,8 +51,8 @@ const Navbar: React.FC<Props> = (props: Props) => {
 
     const getNavbarMainLinks = () => (
         <>
-            <Link className="navbar-link navbar-link-highlight" onClick={updateNavbar} href="/#about"> 
-                <img className="navbar-link-highlight__ellipse" src="/purple-ellipse.svg" alt="" /> {  getNavbarLinkContent("/home.svg" , "About") }
+            <Link className="navbar-link navbar-link-highlight" onClick={updateNavbar} href="/#about-me"> 
+                <img className="navbar-link-highlight__ellipse" src="/purple-ellipse.svg" alt="" /> {  getNavbarLinkContent("/home.svg" , "About Me") }
             </Link>
             <Link className="navbar-link" onClick={updateNavbar} href="/#skills">{ getNavbarLinkContent("/briefcase.svg" , "Skills") }</Link>
             <Link className="navbar-link" onClick={updateNavbar} href="/#timeline">{ getNavbarLinkContent("/clock.svg" , "Timeline") }</Link>

@@ -1,0 +1,1 @@
+export type backgroundColors = "purple" | "gray" | "blue" | "transparent";
