@@ -1,8 +1,9 @@
 .footer {
     display: flex;
     flex-direction: column;
+    align-self: flex-end;
 
-    @include breakpoint($laptop) {
+    @include breakpoint($tablet) {
         margin-bottom: 90px;
     }
 

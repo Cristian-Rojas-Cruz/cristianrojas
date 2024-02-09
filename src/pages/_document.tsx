@@ -6,7 +6,6 @@ const Document: NextPage = () => {
     <Html lang="en">
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <title>cristianrojas</title>
         <meta name="description" content="Cristian Rojas portfolio"></meta>
       </Head>
       <body>

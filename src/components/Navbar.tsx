@@ -11,9 +11,9 @@ const Navbar: React.FC<Props> = (props: Props) => {
     const [activeLink, setActiveLink] = useState<number>(0);
     const navbarRef = useRef<HTMLDivElement>(null);
 
-    const updateNavbar = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        if (navbarRef.current) {
-            if (navbarRef.current.children[activeLink].children[0].className === "navbar-link-highlight__ellipse"){
+    const updateNavbar = (event: React.MouseEvent<HTMLAnchorElement>, index: Number) => {
+        if (navbarRef.current && index !== activeLink) {
+            if (navbarRef.current.children[activeLink].children[0].className === "navbar-link-highlight__ellipse" ){
                 navbarRef.current.children[activeLink].classList.remove("navbar-link-highlight");
                 navbarRef.current.children[activeLink].children[0].remove();
             }
@@ -41,7 +41,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
     }
 
     const getNavbarLinkContent = (iconLink: string, text:string) => {
-        if (width <= 580) {
+        if (width <= 768) {
             return (
                 <>{generateImg(iconLink, text)}</>
             ) 
@@ -51,13 +51,14 @@ const Navbar: React.FC<Props> = (props: Props) => {
 
     const getNavbarMainLinks = () => (
         <>
-            <Link className="navbar-link navbar-link-highlight" onClick={updateNavbar} href="/#about-me"> 
+            <Link className="navbar-link navbar-link-highlight" onClick={(e) => updateNavbar(e,0)} href="/#about-me"> 
                 <img className="navbar-link-highlight__ellipse" src="/purple-ellipse.svg" alt="" /> {  getNavbarLinkContent("/home.svg" , "About Me") }
             </Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#skills">{ getNavbarLinkContent("/briefcase.svg" , "Skills") }</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#timeline">{ getNavbarLinkContent("/clock.svg" , "Timeline") }</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#projects">{ getNavbarLinkContent("/projects-icon.svg" , "Projects") }</Link>
-            <Link className="navbar-link" onClick={updateNavbar} href="/#references">{ getNavbarLinkContent("/persons-icon.svg" , "References") }</Link>
+            <Link className="navbar-link" onClick={(e) => updateNavbar(e,1)} href="/#skills">{ getNavbarLinkContent("/briefcase.svg" , "Skills") }</Link>
+            <Link className="navbar-link" onClick={(e) => updateNavbar(e,2)} href="/#timeline">{ getNavbarLinkContent("/clock.svg" , "Timeline") }</Link>
+            <Link className="navbar-link" onClick={(e) => updateNavbar(e,3)} href="/#projects">{ getNavbarLinkContent("/projects-icon.svg" , "Projects") }</Link>
+            <Link className="navbar-link" onClick={(e) => updateNavbar(e,4)} href="/#references">{ getNavbarLinkContent("/persons-icon.svg" , "References") }</Link>
+            
         </>
     )
 
@@ -69,17 +70,16 @@ const Navbar: React.FC<Props> = (props: Props) => {
         </>
     )
 
-    useEffect(() => {
-        if (width < 580) {
-
-        }
-    }, [])
 
     return (
         <div className={"navbar " + ((props.className)?props.className:"")} >
             <div className="navbar__main" ref={navbarRef}>
                 { getNavbarMainLinks() }
             </div>
+            <div className="navbar__middle">
+              <img src="/spain-flag.svg" alt="language" />
+            </div>
+
             <div className="navbar__secondary">
                 { getNavbarSecondaryLinks() }
             </div>
