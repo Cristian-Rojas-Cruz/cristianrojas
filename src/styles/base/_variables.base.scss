@@ -22,6 +22,7 @@ $max-number-of-grid-columns: 4;
 
 // Breakpoints
 
+$mobile-s: 'mobile-s';
 $mobile-m: 'mobile-m';
 $mobile-l: 'mobile-l';
 $tablet:  'tablet';
@@ -30,6 +31,7 @@ $laptop-l: 'laptop-l';
 $navbar-icons-breakpoint: "navbar-icons-breakpoint";
 
 $breakpoints: (
+    $mobile-s: ( max-width:  320px  ),
     $mobile-m: ( max-width:  375px  ),
     $mobile-l: ( max-width:  425px  ),
     $navbar-icons-breakpoint: ( max-width:  580px  ),

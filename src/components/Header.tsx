@@ -6,21 +6,14 @@ const Header: React.FC = () => {
   const { width } = useWindowSize();
 
   const getLogo = () => {
-    if(width <= 768) {
-      return (<img className="header__logo" src="/logo-shorthand.svg" alt="Cristian Rojas" />)
-    } else {
-      return (<img className="header__logo" src="/logo.svg" alt="Cristian Rojas" />)
-    }
   }
 
     return (
         <div className='header'>
-          <div className="container">
-            {
-              getLogo()
-            }
-            <Navbar className="header__navigation"/>
-          </div>
+          {
+            <img className="header__logo" src={width <= 768?"/logo-shorthand.svg":"/logo.svg"} alt="Cristian Rojas" />
+          }
+          <Navbar className="header__navigation"/>
         </div>
     )
 }
