@@ -3,12 +3,13 @@
     z-index: 1;
     top: 0px;
     background-color: $primary-white-background-color;
-    border-bottom: 3px solid $primary-black-border;
+    border-bottom: 2px solid $primary-black-border;
     width: 100%;
+    margin-top: -1px;
 
     display: flex;
     justify-content: space-between;
-    height: 90px;
+    height: 80px;
 
 
     &__logo {

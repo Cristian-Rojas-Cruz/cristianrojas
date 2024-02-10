@@ -9,7 +9,7 @@ import References from '@/sections/References';
 const Home: NextPage = () => {
   return (
     <>
-      {/* <Banner/> */}
+      <Banner/>
       
       {/* <AboutMe />
       <TechnicalSkills />

@@ -33,22 +33,19 @@
             justify-content: space-evenly;
     
         }
-        
-        .navbar-link-highlight {
+
+        .navbar-link {
+
+          img {
+            height: 25px;
+          }
+          
+          &-highlight {
             position: relative;
             color: $primary-purple-color;
             font-weight: bold;
-    
-            &__ellipse {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-
-                @include breakpoint($navbar-icons-breakpoint) {
-                    display: none;
-                }
-            }
+            filter: invert(0.5) sepia(1) saturate(210) hue-rotate(278deg);
+          }
         }
     }
 

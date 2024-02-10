@@ -3,19 +3,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
     width: 100%;
     position: relative;
     overflow: hidden;
+    padding: 100px 0px;
 
     &__image{
-        width: 200%;
+      width: 115vw;
         position: absolute;
         transform: rotate(0deg); 
         animation:spin 7s linear infinite;
 
         @include breakpoint($tablet) {
-            width: 300%;
+          width: 160vw;
+        }
+        @include breakpoint($mobile-m) {
+          width: 300vw;
         }
     }
 
@@ -28,14 +31,14 @@
         }
         
         p {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 600;
             line-height: 22.4px;
         }
 
         h1 {
-            font-size: 50px;
-            line-height: 68.09px;
+            font-size: 35px;
+            line-height: 60px;
             font-weight: 700;
         }
     }
